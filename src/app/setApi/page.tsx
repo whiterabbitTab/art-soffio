@@ -10,36 +10,72 @@ import { useAddNewProductsMutation, useGetAllProductsQuery } from '@/store/api/p
 const setApiPage = () => {
 
   const [newProduct, setNewProduct] = useState<IProducts>({
-    id: '',
-    title: '',
-    type: '',
+    id: 'p1',
+    title: 'Матовая помада-карандаш Matte Color Тон 01 Сладкий...',
+    type: 'accessories',
     description: {
-      fullInfo: [''],
-      heading: ''
+      fullInfo: [
+        "Не сущит, не стирается",
+        "Не сущит, не стирается",
+        "Не сущит, не стирается",
+        "Не сущит, не стирается"
+      ],
+      heading: 'Комфортное матовое покрытие на весь день! Питает и увлажняет губы. Форма помады способствует более точному, ровному нанесению.'
     },
-    price: 0,
-    discount: 0,
-    entrance: '',
-    image: '',
+    price: 1850,
+    discount: 55,
+    entrance: '2024-07-15T17:18:13',
+    image: '/product1.png',
     stock: false,
     tons: [
       {
-        id: 0,
-        ton: '',
-        colors: []
+        id: 1,
+        ton: 'Бордовый',
+        colors: [
+          "#CD0E41",
+          "#E790BF",
+          "#46014C"
+        ]
+      },
+      {
+        id: 2,
+        ton: 'Утрення заря',
+        colors: [
+          "#CD0E41",
+          "#E790BF",
+          "#46014C"
+        ]
+      },
+      {
+        id: 3,
+        ton: 'Персико-розовый',
+        colors: [
+          "#CD0E41",
+          "#E790BF",
+          "#46014C"
+        ]
+      },
+      {
+        id: 4,
+        ton: 'Малиновый',
+        colors: [
+          "#CD0E41",
+          "#E790BF",
+          "#46014C"
+        ]
       }
     ],
-    weight: ''
+    weight: '30g'
   })
   const [updateData] = useAddNewProductsMutation()
-  
-  const handleSaveProduct = (e: FormEvent<HTMLButtonElement>) => {
+  const { data } = useGetAllProductsQuery()
+  const handleSaveProduct = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     updateData(newProduct)
   }
 
   return (
-    <form className={styles.api__page}>
+    <form  onSubmit={(e) => handleSaveProduct(e)} className={styles.api__page}>
       <h1 className="text-3xl text-[#f121f8] font-semibold tracking-widest">Add New Product</h1>
       {fields.map(field => {
         return <Field typeField='def' newProduct={newProduct} setNewProduct={setNewProduct} value={field} key={field} />
@@ -58,68 +94,9 @@ const setApiPage = () => {
           )}
         </div>
       </div>
-      <button type='submit' onSubmit={(e) => handleSaveProduct(e)}>Save Data</button>
+      <button type='submit'>Save Data</button>
     </form>
   )
 }
 
 export default setApiPage
-
-// {
-//   id: 'p1',
-//   title: 'Матовая помада-карандаш Matte Color Тон 01 Сладкий...',
-//   type: 'accessories',
-//   description: {
-//     fullInfo: [
-//       "Не сущит, не стирается",
-//       "Не сущит, не стирается",
-//       "Не сущит, не стирается",
-//       "Не сущит, не стирается"
-//     ],
-//     heading: 'Комфортное матовое покрытие на весь день! Питает и увлажняет губы. Форма помады способствует более точному, ровному нанесению.'
-//   },
-//   price: 1850,
-//   discount: 55,
-//   entrance: '2024-07-15T17:18:13',
-//   image: '/product1.png',
-//   stock: false,
-//   tons: [
-//     {
-//       id: 1,
-//       ton: 'Бордовый',
-//       colors: [
-//         "#CD0E41",
-//         "#E790BF",
-//         "#46014C"
-//       ]
-//     },
-//     {
-//       id: 2,
-//       ton: 'Утрення заря',
-//       colors: [
-//         "#CD0E41",
-//         "#E790BF",
-//         "#46014C"
-//       ]
-//     },
-//     {
-//       id: 3,
-//       ton: 'Персико-розовый',
-//       colors: [
-//         "#CD0E41",
-//         "#E790BF",
-//         "#46014C"
-//       ]
-//     },
-//     {
-//       id: 4,
-//       ton: 'Малиновый',
-//       colors: [
-//         "#CD0E41",
-//         "#E790BF",
-//         "#46014C"
-//       ]
-//     }
-//   ],
-//   weight: '30g'
-// }

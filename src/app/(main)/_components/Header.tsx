@@ -6,6 +6,7 @@ export const Header = () => {
   return(
     <>
       <div className="absolute w-full top-[99px] h-[1px] bg-[#E5E5E5]"></div>
+      <div className="absolute w-full top-[156px] h-[1px] bg-[#E5E5E5]"></div>
       <header className="flex flex-col items-center h-40 w-4/5 mx-auto">
         <div className="h-24 flex justify-around items-center w-full">
           <div className="flex flex-col items-center gap-y-1">
