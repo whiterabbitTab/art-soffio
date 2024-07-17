@@ -1,6 +1,4 @@
 import { pagesCards } from "@/constants/home.constant";
-import { Image } from "antd";
-import Link from "next/link";
 import { ProductTypeCard } from "./ProductTypeCard";
 
 export const ProductsTypeCards = () => {
