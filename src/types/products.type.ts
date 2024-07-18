@@ -12,13 +12,14 @@ interface IDescription {
 export interface IProducts {
   id: string;
   type: string;
+  brand: string;
   title: string;
   price: number;
   discount: number;
   image: string;
-  tons: ITon[];
   entrance: string;
   weight: string;
   stock: boolean;
   description: IDescription;
+  tons: ITon[];
 }

@@ -10,27 +10,27 @@ export const Header = () => {
   }
 
   return(
-    <header className="flex flex-col items-center justify-center h-40 w-full md:w-4/5 mx-auto">
-      <div className="absolute w-full top-[99px] h-[1px] bg-[#E5E5E5]"></div>
-      <div className="absolute w-full top-[156px] h-[1px] bg-[#E5E5E5]"></div>
+    <header className="flex flex-col items-center justify-center h-24 lg:h-40 w-full lg:w-4/5 mx-auto">
+      <div className="hidden lg:block absolute w-full top-[99px] h-[1px] bg-[#E5E5E5]"></div>
+      <div className="hidden lg:block absolute w-full top-[156px] h-[1px] bg-[#E5E5E5]"></div>
       <div className="h-24 flex justify-around items-center w-full">
-        <div className="hidden md:flex flex-col items-center gap-y-1">
+        <div className="hidden lg:flex flex-col items-center gap-y-1">
           <span className="font-normal font-base leading-6 cursor-default">+7 (747) 845 58 86</span>
           <button className="transition-all duration-300 hover:opacity-80 flex items-center justify-center h-[23px] w-full border border-[#555555] rounded-[19px] font-semibold text-xs">Заказать звонок</button>
         </div>
-        <div className="md:hidden block">
+        <div className="lg:hidden block">
           <Image src="/burger_menu.png" alt="burger" preview={false} width={23} height={14} className="cursor-pointer" onClick={() => handleBurgerMenu()} />
         </div>
-        <div id="burger" style={{ display: 'none' }} className="fixed md:hidden flex flex-col w-96 top-24 left-0 gap-y-1 bg-black bg-opacity-25 rounded-3xl">
+        <div id="burger" style={{ display: 'none' }} className="fixed lg:hidden flex flex-col w-96 top-16 left-0 gap-y-1 bg-black bg-opacity-25 rounded-3xl">
           {headerLink.map(link => {
             return <Link href={link.href} key={link.name} className="flex w-full py-2 px-2 font-semibold text-base leading-6">{link.name}</Link>
           })}
         </div>
         <div>
-          <Link href='/' className="hidden md:block">
+          <Link href='/' className="hidden lg:block">
             <Image src="/art-soffio_header.png" alt="art soffio" preview={false} width={290} height={56} className="cursor-pointer" />
           </Link>
-          <Link href={'/'} className="block md:hidden">
+          <Link href={'/'} className="block lg:hidden">
             <Image src="/art-soffio_header_mb.png" alt="art soffio" preview={false} width={145} height={26} className="cursor-pointer" />
           </Link>
         </div>
@@ -39,7 +39,7 @@ export const Header = () => {
           <Image src="/basket_header.png" alt="Basket" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
         </div>
       </div>
-      <div className="hidden md:flex items-center h-14 w-full justify-around">
+      <div className="hidden lg:flex items-center h-14 w-full gap-x-[84px]">
         {headerLink.map(link => {
           return <Link className="transition-all duration-300 hover:text-[#FF00FF] font-semibold text-xl leading-6" key={link.name} href={link.href}>{link.name}</Link>
         })}

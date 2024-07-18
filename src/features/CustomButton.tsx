@@ -8,10 +8,11 @@ interface ICustomButton {
   title: string;
   bgColor: string;
   textColor: string;
+  className: string;
 }
 
-export const CustomButton = ({ width, height, submitFn, clickFn, title, bgColor, textColor }: ICustomButton) => {
+export const CustomButton = ({ width, height, submitFn, clickFn, title, bgColor, textColor, className }: ICustomButton) => {
   return(
-    <button style={{ width: width, height: height, color: textColor }} onSubmit={submitFn} onClick={clickFn} className={`transition-all duration-300 hover:text-black border hover:text-[${bgColor}] hover:border-[${bgColor}] flex items-center justify-center py-2 font-normal text-lg leading-6 rounded-[19px] bg-[${bgColor}]`}>{title}</button>
+    <button style={{ width: width, height: height }} onSubmit={submitFn} onClick={clickFn} className={`transition-all duration-300 border text-white hover:text-[${bgColor}] hover:border-[${bgColor}] flex items-center justify-center py-2 font-normal text-lg leading-6 rounded-[19px] ${className} bg-[${bgColor}]`}>{title}</button>
   );
 };

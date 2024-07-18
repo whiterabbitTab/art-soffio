@@ -9,17 +9,17 @@ export interface IPagesCards {
 
 export const homeResponsive: ResponsiveType = {
   superLargeDesktop: {
-    breakpoint: { max: 3000, min: 1500 },
+    breakpoint: { max: 3000, min: 1300 },
     items: 4,
     slidesToSlide: 4
   },
   desktop: {
-    breakpoint: { max: 1500,  min: 1100 },
+    breakpoint: { max: 1300,  min: 530 },
     items: 3,
     slidesToSlide: 3
   },
   tablet: {
-    breakpoint: { max: 1100, min: 324 },
+    breakpoint: { max: 530, min: 324 },
     items: 2,
     slidesToSlide: 2
   }

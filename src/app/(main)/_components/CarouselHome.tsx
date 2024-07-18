@@ -1,3 +1,5 @@
+'use client'
+
 import { ProductCard } from "@/app/setApi/_components/ProductCard";
 import { homeResponsive } from "@/constants/home.constant";
 import { useGetAllProductsQuery } from "@/store/api/products.api";
@@ -11,14 +13,14 @@ export const CarouselHome = () => {
   return(
     <>
       {isLoading ? (<div>Загрузка</div>) : isSuccess ? (
-        <div className="relative w-full hidden md:flex flex-col gap-y-12">
-          <h1 className="font-semibold text-4xl w-full text-center text-[#555555]">Хит продаж</h1>
-          <Link href='/' className="transition-all duration-300 hover:opacity-60 relative left-[90%] border-b-2 border-[#555555] text-[#555555] font-semibold text-xl w-36">Смотреть все</Link>
+        <div className="relative w-full flex flex-col gap-y-12">
+          <h1 className="font-semibold text-lg md:text-4xl w-full text-center text-[#555555]">Хит продаж</h1>
+          <Link href='/' className="hidden md:block transition-all duration-300 hover:opacity-60 w-full text-end text-[#555555] font-semibold text-xl pr-6">Смотреть все</Link>
           <Carousel
             responsive={homeResponsive}
             autoPlay={false}
             arrows
-            className="ml-24"
+            className="ml-12 md:ml-16 lg:ml-24 flex flex-row"
             pauseOnHover
             customTransition="all .5s"
             transitionDuration={500}

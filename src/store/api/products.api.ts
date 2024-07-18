@@ -3,6 +3,7 @@ import { IProducts } from '@/types/products.type';
 import { firestore } from '@/config/firebase.config';
 import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import firebase from 'firebase/app';
+import { url } from 'inspector';
 
 //! ПРИ ИСПОЛЬЗОВАНИИ ЕБАННОГО FIREBASE У НАС НЕТ ПО ФАКТУ БАЗОВОГО URL, ПОЭТОМУ ПРИХОДИТСЯ ЮЗАТЬ queryFn
 
