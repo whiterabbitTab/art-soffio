@@ -14,8 +14,8 @@ const Catalog = () =>{
     <div className="flex flex-col gap-y-4 my-4 w-full">
       {/* <Image /> */}
       <div className="grid grid-cols-3 justify-center gap-y-2 gap-x-2 2xl:grid-cols-4 w-full mx-auto">
-        {catalog.catalogs.map(({ href, image, title }) => {
-          return <CatalogCard href={href} image={image} title={title}  />
+        {catalog.catalogs.map(({ href, image, title, productName }) => {
+          return <CatalogCard href={href} image={image} title={title} productName={productName}  />
         })}
       </div>
     </div>

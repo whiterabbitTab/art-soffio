@@ -9,12 +9,12 @@ export interface IPagesCards {
 
 export const homeResponsive: ResponsiveType = {
   superLargeDesktop: {
-    breakpoint: { max: 3000, min: 1300 },
+    breakpoint: { max: 3000, min: 1400 },
     items: 4,
     slidesToSlide: 4
   },
   desktop: {
-    breakpoint: { max: 1300,  min: 530 },
+    breakpoint: { max: 1400,  min: 530 },
     items: 3,
     slidesToSlide: 3
   },
@@ -38,7 +38,7 @@ export const pagesCards: IPagesCards[] = [
     image: '/skin_image_pages.png',
     bgColor: '#FBFCEA'
   },
-  {
+  { 
     href: '/',
     title: "Уход за волосами",
     image: '/hair_image_pages.png',

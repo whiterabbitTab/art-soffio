@@ -8,7 +8,7 @@ const NewProducts = () =>{
   const { data: products } = useGetAllProductsQuery()
 
   return (
-    <div className="flex items-center gap-x-7">
+    <div className="hidden lg:flex items-center gap-x-7">
       <div className="flex flex-col items-center">
         <Image src="/newproducts-img.png" preview={false} alt="new products" className="pointer-events-none relative z-10" />
         <div className="flex flex-col items-center relative bottom-24 gap-y-[10px] text-white z-20">

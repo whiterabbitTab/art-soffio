@@ -6,6 +6,7 @@ import Link from "next/link"
 import Carousel, { ArrowProps } from "react-multi-carousel"
 import 'react-multi-carousel/lib/styles.css';
 import CatalogCard from "./_components/CatalogCard"
+import { ProductCard } from "@/app/setApi/_components/ProductCard"
 
 const CatalogPage = () =>{
 
@@ -39,7 +40,7 @@ const CatalogPage = () =>{
               renderButtonGroupOutside={false}
               renderDotsOutside={false}
             >
-              {catalogs.map(({ href, image, title }) => {
+              {catalogs.map(({ href, image, title, productName }) => {
                 return <CatalogCard key={title} image={image} title={title} href={href} />
               })}
             </Carousel>

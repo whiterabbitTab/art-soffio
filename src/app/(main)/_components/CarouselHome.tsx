@@ -18,9 +18,10 @@ export const CarouselHome = () => {
           <Link href='/' className="hidden md:block transition-all duration-300 hover:opacity-60 w-full text-end text-[#555555] font-semibold text-xl pr-6">Смотреть все</Link>
           <Carousel
             responsive={homeResponsive}
+            removeArrowOnDeviceType={['mobile', 'tablet']}
             autoPlay={false}
             arrows
-            className="ml-12 md:ml-16 lg:ml-24 flex flex-row"
+            className="ml-12 md:ml-16 lg:ml-24 2xl:ml-0 flex flex-row"
             pauseOnHover
             customTransition="all .5s"
             transitionDuration={500}

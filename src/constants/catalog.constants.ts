@@ -7,6 +7,7 @@ interface ICatalogPages {
     image: string;
     href: string;
     title: string;
+    productName: string;
   }[]
 }
 
@@ -18,31 +19,37 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
     ]
@@ -54,31 +61,37 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
     ]
@@ -90,31 +103,37 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
     ]
@@ -126,31 +145,37 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
     ]
