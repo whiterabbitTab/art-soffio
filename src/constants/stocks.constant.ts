@@ -1,3 +1,5 @@
+import { ResponsiveType } from "react-multi-carousel";
+
 interface IGreeting {
   title: string;
   span: string;
@@ -10,6 +12,14 @@ interface IBrandsCards {
   image1: string;
   image2: string;
   brand: string;
+}
+
+export const stocksGreetingResp: ResponsiveType = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 50 },
+    items: 1,
+    slidesToSlide: 1
+  }
 }
 
 export const greeting: IGreeting[] = [

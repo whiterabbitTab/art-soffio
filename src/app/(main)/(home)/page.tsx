@@ -7,17 +7,11 @@ import { MorePages } from "../_components/MorePages";
 import { ProductsTypeCards } from "../_components/ProductsTypeCards";
 import { socailMedias } from "@/constants/footer";
 import { Image } from "antd";
+import NewProducts from "../_components/NewProducts";
 
 export default function Home() {
-
-  const handleBurgerMenu = () => {
-    const burgerMenu = document.querySelector('#burger') as HTMLDivElement
-    burgerMenu.style.display = 'none'
-  }
-
   return (
     <div className="flex flex-col w-full gap-y-10">
-      {/* <div onClick={() => handleBurgerMenu()} className="absolute opacity-0 w-full h-full"></div> */}
       <Greeting />
       <CarouselHome />
       <MorePages />
@@ -30,6 +24,7 @@ export default function Home() {
           })}
         </div>
       </div>
+      <NewProducts />
     </div>
   );
 }

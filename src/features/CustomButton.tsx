@@ -6,13 +6,12 @@ interface ICustomButton {
   submitFn?: (e: FormEvent<HTMLButtonElement>) => void;
   clickFn?: (e: MouseEvent<HTMLButtonElement>) => void;
   title: string;
-  bgColor: string;
-  textColor: string;
-  className: string;
+  bgColor?: string;
+  className?: string;
 }
 
-export const CustomButton = ({ width, height, submitFn, clickFn, title, bgColor, textColor, className }: ICustomButton) => {
+export const CustomButton = ({ width, height, submitFn, clickFn, title, bgColor, className }: ICustomButton) => {
   return(
-    <button style={{ width: width, height: height }} onSubmit={submitFn} onClick={clickFn} className={`transition-all duration-300 border text-white hover:text-[${bgColor}] hover:border-[${bgColor}] flex items-center justify-center py-2 font-normal text-lg leading-6 rounded-[19px] ${className} bg-[${bgColor}]`}>{title}</button>
+    <button style={{ width: `${width}px`, height: `${height}px` }} onSubmit={submitFn} onClick={clickFn} className={`transition-all duration-300 border hover:border-[${bgColor}] text-white flex items-center justify-center py-2 font-normal text-lg leading-6 rounded-[19px] ${className} bg-[${bgColor}]`}>{title}</button>
   );
 };

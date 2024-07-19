@@ -14,7 +14,7 @@ interface IStocksBrand {
 
 const StocksBrand = ({ heading, image1, image2, products }: IStocksBrand) =>{
   return (
-    <div className="flex flex-col gap-y-10 w-full">
+    <div className="flex flex-col gap-y-10 w-full items-center">
       <h1 className="font-semibold text-4xl leading-10">{heading}</h1>
       <div className="flex w-full justify-between items-center">
         <Image src={image1} alt="Image1" preview={false} />
