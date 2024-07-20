@@ -20,6 +20,7 @@ export interface IProducts {
   entrance: string;
   weight: string;
   stock: boolean;
+  manufactures: string;
   description: IDescription;
   tons: ITon[];
 }

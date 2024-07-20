@@ -3,14 +3,13 @@ import { Image } from "antd";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const ProductCard = ({ id, image, text, price, discount, brand }: { id: string; image: string, text: string, price: number, discount: number; brand: string; }) => {
+export const ProductCard = ({ id, image, text, price, discount, brand, manufactures }: { id: string; image: string, text: string, price: number, discount: number; brand: string; manufactures: string; }) => {
 
-  const path = usePathname()
-  console.log(path)
+  console.log(manufactures)
 
   return(
     <Link data-element="product-card" href={{
-      pathname: path + "/product",
+      pathname: `catalog/${manufactures}/product`,
       query: {
         productId: id,
         brand: brand
@@ -24,7 +23,10 @@ export const ProductCard = ({ id, image, text, price, discount, brand }: { id: s
       </div>
       <span className="font-normal text-[10px] xl:text-[10px] leading-6 text-[#888888]">ART SOFFIO</span>
       <h2 className="font-normal max-w-[137px] xl:max-w-[264px] text-[10px] lg:text-[12px] xl:text-[15px] overflow-hidden text-ellipsis whitespace-nowrap max-h-10 leading-6 text-[#555555]">{text}</h2>
-      <span className="font-normal max-w-[137px] xl:max-w-[264px] text-[10px] lg:text-[13px] xl:text-xl leading-6 my-1">{price}₸</span>
+      <div className="w-full flex items-center gap-x-8">
+        <span className="font-normal max-w-[137px] xl:max-w-[264px] text-[10px] lg:text-[13px] xl:text-xl leading-6 my-1">{discount > 0 ? (price - (price * (discount * 0.01))).toFixed(2) : price}₸</span>
+        {discount > 0 ? <span className="font-normal max-w-[137px] xl:max-w-[264px] text-[10px] lg:text-[13px] xl:text-xl leading-6 my-1 text-[#888484] line-through">{price}₸</span> : null}
+      </div>
       <CustomButton bgColor="#A19C9C" title="Добавить" width={264} height={34} className='xl:flex hidden text-lg hover:bg-white hover:text-[#888484]' />
       <CustomButton bgColor="#A19C9C" title="Добавить" width={137} height={23} className='flex xl:hidden text-xs hover:bg-white hover:text-[#888484]' />
     </Link>

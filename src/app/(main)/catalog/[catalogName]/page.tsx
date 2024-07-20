@@ -20,8 +20,8 @@ const Catalog = () =>{
     <div className="flex flex-col items-center gap-y-4 my-4 w-full">
       <h1 className="font-semibold my-6 text-4xl">{`Каталог бренда ${brand.slice(0, 1).toUpperCase() + brand.replace('-', ' ').slice(1).replace('/', '')}`}</h1>
       <div className="grid grid-cols-3 justify-center gap-y-2 gap-x-2 2xl:grid-cols-4 w-full mx-auto">
-        {filteredProducts && filteredProducts.map(({ title, discount, price, image, id, brand }) => {
-          return <ProductCard id={id} discount={discount} text={title} image={image} price={price} key={title} brand={brand} />
+        {filteredProducts && filteredProducts.map(({ title, discount, price, image, id, brand, manufactures }) => {
+          return <ProductCard id={id} discount={discount} text={title} image={image} price={price} key={title} brand={brand} manufactures={manufactures} />
         })}
       </div>
     </div>

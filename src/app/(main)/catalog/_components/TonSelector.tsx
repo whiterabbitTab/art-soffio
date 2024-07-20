@@ -34,28 +34,25 @@ export const TonSelector = ({ tons }: { tons: ITon[] }) => {
       </Dropdown>
       <div className="grid grid-cols-7 gap-1 h-[136px] overflow-y-scroll border border-black p-[2px]">
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
         {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
-        })}
-        {tons.filter(ton => ton.id === tonId)[0].colors.map(color => {
-          return <div className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+          return <div key={color} className="transition-all duration-300 hover:scale-105 size-[55px] cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
         })}
       </div>
     </div>

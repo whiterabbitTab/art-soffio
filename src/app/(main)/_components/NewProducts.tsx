@@ -17,8 +17,8 @@ const NewProducts = () =>{
         </div>
       </div>
       <div className="flex gap-x-7">
-        {products && products.slice(0,2).map(({ discount, price, image, title, id, brand }) => {
-          return <ProductCard id={id} text={title} image={image} price={price} discount={discount} brand={brand} />
+        {products && products.slice(0,2).map(({ discount, price, image, title, id, brand, manufactures }) => {
+          return <ProductCard key={title} manufactures={manufactures} id={id} text={title} image={image} price={price} discount={discount} brand={brand} />
         })}
       </div>
     </div>

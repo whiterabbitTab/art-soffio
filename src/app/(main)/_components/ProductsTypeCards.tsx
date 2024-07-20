@@ -7,7 +7,7 @@ export const ProductsTypeCards = () => {
       <h1 className="font-semibold text-lg md:text-4xl text-[#555555]">Мир красоты и ухода</h1>
       <div className="grid grid-cols-2 gap-4 pl-4 lg:flex lg:justify-between w-full">
         {pagesCards.map(card => {
-          return <ProductTypeCard card={card} />
+          return <ProductTypeCard key={card.href} card={card} />
         })}
       </div>
     </div>
