@@ -5,16 +5,14 @@ import { usePathname } from "next/navigation";
 
 export const ProductCard = ({ id, image, text, price, discount, brand, manufactures }: { id: string; image: string, text: string, price: number, discount: number; brand: string; manufactures: string; }) => {
 
-  console.log(manufactures)
-
   return(
     <Link data-element="product-card" href={{
-      pathname: `catalog/${manufactures}/product`,
+      pathname: `/catalog/${manufactures}/product`,
       query: {
         productId: id,
         brand: brand
       }
-    }} className="flex flex-col gap-y-1 w-[137px] lg:w-[264px] h-[303px] lg:h-[420px] cursor-pointer px-2">
+    }} as={`/catalog/${manufactures}/product?productId=${id}&brand=${brand}`} className="flex flex-col gap-y-1 w-[137px] lg:w-[264px] h-[303px] lg:h-[420px] cursor-pointer px-2">
       <div className="hidden xl:flex items-center justify-center">
         <Image src={image} width={220} height={220} preview={false} alt="Product Card"/>
       </div>
