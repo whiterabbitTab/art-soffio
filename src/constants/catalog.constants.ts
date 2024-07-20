@@ -8,6 +8,7 @@ interface ICatalogPages {
     href: string;
     title: string;
     productName: string;
+    brand: string;
   }[]
 }
 
@@ -19,36 +20,42 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'art-soffio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
@@ -61,36 +68,42 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'vollare',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
@@ -103,36 +116,42 @@ export const catalogPages: ICatalogPages[] = [
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
         href: '/catalog/FashionClub',
+        brand: 'sessio',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       }
@@ -144,36 +163,42 @@ export const catalogPages: ICatalogPages[] = [
     catalogs: [
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'
       },
       {
         image: '/catalogPage.png',
+        brand: 'variete',
         href: '/catalog/FashionClub',
         productName: 'productName',
         title: 'Каталог на Тушь Fashion Club'

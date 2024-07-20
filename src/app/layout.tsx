@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { ReduxProvider } from "./_provider/ReduxProvider";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -1,4 +1,4 @@
-interface ITon {
+export interface ITon {
   id: number;
   ton: string;
   colors: string[];

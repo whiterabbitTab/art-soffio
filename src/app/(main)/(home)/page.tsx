@@ -20,7 +20,7 @@ export default function Home() {
         <h1 className="text-sm font-semibold">Мы в социальных сетях</h1>
         <div className="flex gap-x-2 mx-auto">
           {socailMedias.map(img => {
-            return <Image src={img} preview={false} width={24} height={24}  />
+            return <Image key={img} src={img} preview={false} width={24} height={24}  />
           })}
         </div>
       </div>

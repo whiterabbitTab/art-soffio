@@ -1,10 +1,21 @@
 import { CustomButton } from "@/features/CustomButton";
 import { Image } from "antd";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export const ProductCard = ({ image, text, price, discount }: { image: string, text: string, price: number, discount: number }) => {
+export const ProductCard = ({ id, image, text, price, discount, brand }: { id: string; image: string, text: string, price: number, discount: number; brand: string; }) => {
+
+  const path = usePathname()
+  console.log(path)
+
   return(
-    <Link data-element="product-card" href='/' className="flex flex-col gap-y-1 w-[137px] lg:w-[264px] h-[303px] lg:h-[420px] cursor-pointer px-2">
+    <Link data-element="product-card" href={{
+      pathname: path + "/product",
+      query: {
+        productId: id,
+        brand: brand
+      }
+    }} className="flex flex-col gap-y-1 w-[137px] lg:w-[264px] h-[303px] lg:h-[420px] cursor-pointer px-2">
       <div className="hidden xl:flex items-center justify-center">
         <Image src={image} width={220} height={220} preview={false} alt="Product Card"/>
       </div>

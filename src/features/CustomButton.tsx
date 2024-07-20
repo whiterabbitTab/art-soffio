@@ -1,8 +1,8 @@
 import { FormEvent, MouseEvent } from "react";
 
 interface ICustomButton {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   submitFn?: (e: FormEvent<HTMLButtonElement>) => void;
   clickFn?: (e: MouseEvent<HTMLButtonElement>) => void;
   title: string;

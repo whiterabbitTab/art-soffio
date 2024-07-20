@@ -26,8 +26,8 @@ export const CarouselHome = () => {
             customTransition="all .5s"
             transitionDuration={500}
           >
-            {products.map(({ discount, price, image, title  }) => {
-              return <ProductCard discount={discount} price={price} image={image} text={title}  />
+            {products.map(({ discount, price, image, title, id, brand  }) => {
+              return <ProductCard id={id} discount={discount} price={price} image={image} text={title} brand={brand}  />
             })}
           </Carousel>
         </div>

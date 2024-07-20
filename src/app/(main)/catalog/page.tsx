@@ -16,7 +16,7 @@ const CatalogPage = () =>{
       <Image src='/catalog_greeting.png' alt="Catalog greeting" preview={false} height={232} className="lg:hidden block pointer-events-none" />
       {catalogPages.map(({ catalogs, heading, href }) => { 
         return (
-          <div className="flex flex-col gap-y-4 items-center w-full">
+          <div key={heading} className="flex flex-col gap-y-4 items-center w-full">
             <h1 className="font-semibold text-sm lg:text-4xl">{heading}</h1>
             <Link href={href} className="hidden md:block transition-all duration-300 hover:opacity-60 w-full text-end text-[#555555] font-semiboldtext-xl pr-6">Смотреть все</Link>
             <Carousel
@@ -40,8 +40,8 @@ const CatalogPage = () =>{
               renderButtonGroupOutside={false}
               renderDotsOutside={false}
             >
-              {catalogs.map(({ href, image, title, productName }) => {
-                return <CatalogCard key={title} image={image} title={title} href={href} />
+              {catalogs.map(({ href, image, title, productName, brand }) => {
+                return <CatalogCard key={title} image={image} title={title} href={href} brand={brand} />
               })}
             </Carousel>
           </div>

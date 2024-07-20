@@ -3,15 +3,15 @@
 import { Image } from "antd";
 import Link from "next/link";
 
-const CatalogCard = ({ image, title, href, productName }: { image: string; title: string; href: string; productName?: string }) => {
+const CatalogCard = ({ image, title, href, productName, brand }: { image: string; title: string; href: string; productName?: string; brand: string }) => {
 
   return (
-    <Link href={productName ? {
-      pathname: `${href}/${productName}`,
+    <Link href={{
+      pathname: href,
       query: {
-        id: '1'
+        brand: brand
       }
-    } : href} className="flex flex-col gap-y-[2px] xl:gap-y-4 select-none cursor-pointer mx-auto justify-center">
+    }} className="flex flex-col gap-y-[2px] xl:gap-y-4 select-none cursor-pointer mx-auto justify-center">
       <div className="hidden xl:block w-[264px]">
         <Image src={image} alt="image" width={264} height={264} preview={false} className="pointer-events-none" />
       </div>
