@@ -37,6 +37,7 @@ export const Header = () => {
         <div className="flex items-center justify-center gap-x-5">
           <Image src="/search_header.png" alt="Search" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
           <Image src="/basket_header.png" alt="Basket" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
+          <Image src="/auth_icon.png" alt="Auth" width={30} height={30} preview={false} className="transition-all duration-200 opacity-50 hover:opacity-30 cursor-pointer" />
         </div>
       </div>
       <div className="hidden lg:flex items-center h-14 w-full gap-x-[84px]">

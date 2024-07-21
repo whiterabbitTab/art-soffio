@@ -27,7 +27,7 @@ export const CarouselHome = () => {
             transitionDuration={500}
           >
             {products.map(({ discount, price, image, title, id, brand, manufactures  }) => {
-              return <ProductCard manufactures={manufactures} id={id} discount={discount} price={price} image={image} text={title} brand={brand}  />
+              return <ProductCard key={title} manufactures={manufactures} id={id} discount={discount} price={price} image={image} text={title} brand={brand}  />
             })}
           </Carousel>
         </div>

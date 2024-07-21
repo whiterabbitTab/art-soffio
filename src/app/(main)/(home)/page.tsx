@@ -8,8 +8,29 @@ import { ProductsTypeCards } from "../_components/ProductsTypeCards";
 import { socailMedias } from "@/constants/footer";
 import { Image } from "antd";
 import NewProducts from "../_components/NewProducts";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/config/firebase.config";
+
+//! ЧТОБЫ ВЫЙТИ ИЗ АККА - signout
 
 export default function Home() {
+
+  const [user, setUser] = useState()
+  
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        console.log('asdfsadf')
+      }
+    })
+    return () => {
+      listen()
+    }
+  }, [])
+
   return (
     <div className="flex flex-col w-full gap-y-10">
       <Greeting />
