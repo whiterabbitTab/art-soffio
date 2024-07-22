@@ -1,4 +1,4 @@
-interface IBasket {
+export interface IBasket {
   quantity: number;
   discount: number;
   price: number;
@@ -7,6 +7,7 @@ interface IBasket {
 
 export interface IUser {
   email: string;
+  icon: string;
   phone?: string;
   username: string;
   name?: string;

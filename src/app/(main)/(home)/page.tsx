@@ -16,20 +16,20 @@ import { auth } from "@/config/firebase.config";
 
 export default function Home() {
 
-  const [user, setUser] = useState()
+  // const [user, setUser] = useState()
   
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user)
-      } else {
-        console.log('asdfsadf')
-      }
-    })
-    return () => {
-      listen()
-    }
-  }, [])
+  // useEffect(() => {
+  //   const listen = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setUser(user)
+  //     } else {
+  //       console.log('asdfsadf')
+  //     }
+  //   })
+  //   return () => {
+  //     listen()
+  //   }
+  // }, [])
 
   return (
     <div className="flex flex-col w-full gap-y-10">

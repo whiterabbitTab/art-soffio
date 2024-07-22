@@ -6,7 +6,7 @@ import { collectionApi } from "./api/collection.api";
 const reducers = combineReducers({
   userSlice: userSlice.reducer,
   [productsApi.reducerPath]: productsApi.reducer,
-  [collectionApi.reducerPath]: collectionApi.reducer
+  [collectionApi.reducerPath]: collectionApi.reducer,
 })
 
 export const store = configureStore({

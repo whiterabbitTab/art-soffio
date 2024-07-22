@@ -2,28 +2,37 @@
 
 import { CustomButton } from "@/features/CustomButton"
 import { InputField } from "../../_components/InputField"
-import { MouseEvent, useState } from "react"
+import { MouseEvent, useEffect, useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/config/firebase.config"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useTypedSelector } from "@/hooks/typedHooks"
 
 const AuthPage = () => {
 
+  const router = useRouter()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmpassword, setConfirmPassword] = useState<string>('')
+  const userInfo = useTypedSelector(state => state.userSlice)
   const handleLogin = (e: MouseEvent<HTMLButtonElement>) => {
     if (password === confirmpassword) {
       signInWithEmailAndPassword(auth, email, password) // не работает в submit
         .then((user) => {
-          console.log(user)
           setEmail('')
           setPassword('')
           setConfirmPassword('')
         })
         .catch((error) => console.log(error))
-    }
+        router.push('/')
+      }
   }
+
+  useEffect(() => {
+    if (userInfo.email) {
+      router.push('/')
+    }
+  }, [userInfo])
 
   return (
     <div className="flex flex-col items-center w-full my-12">
@@ -36,7 +45,7 @@ const AuthPage = () => {
         </div>
         <div className="flex flex-col gap-y-2 w-3/5">
           <CustomButton clickFn={handleLogin} title="Вход" className="bg-[#43BE65] w-full h-10 hover:text-[#43BE65] hover:bg-white border-2"/>
-          <button type="button" className="transition-all duration-300 hover:opacity-60 font-normal text-sm">Нет аккаунта?</button>
+          <button onClick={() => router.push('/registration')} type="button" className="transition-all duration-300 hover:opacity-60 font-normal text-sm">Нет аккаунта?</button>
         </div>
       </form>
     </div>

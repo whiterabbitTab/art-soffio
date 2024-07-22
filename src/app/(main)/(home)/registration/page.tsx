@@ -1,34 +1,47 @@
 'use client'
 
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { InputField } from "../../_components/InputField"
 import { CustomButton } from "@/features/CustomButton"
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/config/firebase.config"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks"
+import { actions as userActions } from "@/store/userslice/user.slice"
 
 const RegistrationPage = () =>{
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  
   const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [phone, setPhone] = useState<string>('')
+  const userInfo = useTypedSelector(state => state.userSlice)
+  const dispatch = useTypedDispatch()
+  const router = useRouter()
 
   const handleCreateUser = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password) // создание юзера с email и паролем 
         .then((user) => {
-          
           setEmail('')
           setPassword('')
           setConfirmPassword('') // удаление данных с состояний после успешной регистрации
           setPhone('')
         })
         .catch((error) => console.log(error))
+        if (phone) {
+          dispatch(userActions.setUser(['phone', phone]))
+        }
+        router.push('/')
     }
   }
+
+  useEffect(() => {
+    if (userInfo.email) {
+      router.push('/')
+    }
+  }, [userInfo])
 
   return (
     <div className="flex flex-col items-center w-full my-12">
@@ -42,7 +55,7 @@ const RegistrationPage = () =>{
         </div>
         <div className="flex flex-col gap-y-2 w-3/5">
           <CustomButton type="submit" title="Регистрация" className="bg-[#43BE65] w-full h-10 hover:text-[#43BE65] hover:bg-white border-2"/>
-          <button type="button" className="transition-all duration-300 hover:opacity-60 font-normal text-sm">Есть аккаунт?</button>
+          <button onClick={() => router.push('/auth')} type="button" className="transition-all duration-300 hover:opacity-60 font-normal text-sm">Есть аккаунт?</button>
         </div>
       </form>
     </div>

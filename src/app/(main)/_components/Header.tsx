@@ -1,13 +1,31 @@
+'use client'
+
+import { auth } from "@/config/firebase.config";
 import { headerLink } from "@/constants/header";
+import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks";
+import { actions as userActions } from "@/store/userslice/user.slice";
 import { Image } from "antd";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export const Header = () => {
 
+  const userInfo = useTypedSelector((state) => state.userSlice)
+  const dispatch = useTypedDispatch()
   const handleBurgerMenu = () => {
     const burgerMenu = document.querySelector('#burger') as HTMLDivElement
     burgerMenu.style.display === 'block' ? burgerMenu.style.display = 'none' : burgerMenu.style.display = 'block'
   }
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (userAccount) => {
+      userAccount && dispatch(userActions.setUser(['email', userAccount.email as string]))
+    })
+    return () => {
+      listen()
+    }
+  }, [])
 
   return(
     <header className="flex flex-col items-center justify-center h-24 lg:h-40 w-full lg:w-4/5 mx-auto">
@@ -36,8 +54,10 @@ export const Header = () => {
         </div>
         <div className="flex items-center justify-center gap-x-5">
           <Image src="/search_header.png" alt="Search" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
-          <Image src="/basket_header.png" alt="Basket" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
-          <Image src="/auth_icon.png" alt="Auth" width={30} height={30} preview={false} className="transition-all duration-200 opacity-50 hover:opacity-30 cursor-pointer" />
+          <Image onClick={() => signOut(auth)} src="/basket_header.png" alt="Basket" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
+          <Link href={`${userInfo.email ? '/profile' : '/auth'}`}>
+            <Image src={`${userInfo.icon ? '/user_icon1.png' : '/auth_icon.png'}`} alt="Auth" width={30} height={30} preview={false} className={`transition-all duration-200 ${userInfo.icon === undefined && 'opacity-50'} hover:opacity-${userInfo.icon ? '60' : '30'} cursor-pointer`} />
+          </Link>
         </div>
       </div>
       <div className="hidden lg:flex items-center h-14 w-full gap-x-[84px]">
