@@ -8,6 +8,7 @@ import { auth } from "@/config/firebase.config"
 import { useRouter } from "next/navigation"
 import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks"
 import { actions as userActions } from "@/store/userslice/user.slice"
+import { useCreateUserByIdMutation } from "@/store/api/user.api"
 
 const RegistrationPage = () =>{
 
@@ -15,6 +16,7 @@ const RegistrationPage = () =>{
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
   const [phone, setPhone] = useState<string>('')
+  const [createUser] = useCreateUserByIdMutation()
   const userInfo = useTypedSelector(state => state.userSlice)
   const dispatch = useTypedDispatch()
   const router = useRouter()
@@ -23,16 +25,14 @@ const RegistrationPage = () =>{
     e.preventDefault()
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password) // создание юзера с email и паролем 
-        .then((user) => {
+        .then(({ user }) => {
           setEmail('')
           setPassword('')
           setConfirmPassword('') // удаление данных с состояний после успешной регистрации
           setPhone('')
+          user.email && createUser({ id: user.uid, phone, email: user.email })
         })
         .catch((error) => console.log(error))
-        if (phone) {
-          dispatch(userActions.setUser(['phone', phone]))
-        }
         router.push('/')
     }
   }

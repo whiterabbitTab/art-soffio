@@ -39,9 +39,9 @@ const AuthPage = () => {
       <form className="flex flex-col items-center w-1/2 gap-y-12 py-6 px-4 bg-[#dddada] rounded-xl">
         <h1 className="font-bold text-3xl leading-10">Авторизация</h1>
         <div className="flex flex-col mb-24">
-          <InputField type="email" name="email" title="Введите ваш email" placeholder="Введите ваш email" setState={setEmail} state={email} className="mb-4" isImportant={true} />
-          <InputField type="password" name="password" title="Введите ваш пароль" placeholder="Введите ваш пароль" setState={setPassword} state={password} className="mb-4" isImportant={true} />
-          <InputField type="password" name="confirmpassword" title="Подтвердите ваш пароль" placeholder="Подтвердите ваш пароль" setState={setConfirmPassword} state={confirmpassword} className="mb-4" isImportant={true} />
+          <InputField type="email" name="email" title="Введите ваш email" placeholder="Введите ваш email" setState={(e) => setEmail(e.target.value)} state={email} className="mb-4" isImportant={true} />
+          <InputField type="password" name="password" title="Введите ваш пароль" placeholder="Введите ваш пароль" setState={(e) => setPassword(e.target.value)} state={password} className="mb-4" isImportant={true} />
+          <InputField type="password" name="confirmpassword" title="Подтвердите ваш пароль" placeholder="Подтвердите ваш пароль" setState={(e) => setConfirmPassword(e.target.value)} state={confirmpassword} className="mb-4" isImportant={true} />
         </div>
         <div className="flex flex-col gap-y-2 w-3/5">
           <CustomButton clickFn={handleLogin} title="Вход" className="bg-[#43BE65] w-full h-10 hover:text-[#43BE65] hover:bg-white border-2"/>

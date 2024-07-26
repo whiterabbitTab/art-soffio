@@ -14,3 +14,5 @@ export interface IUser {
   surname?: string;
   basket: IBasket[]
 }
+
+export interface IUserData extends Omit<IUser, "basket"> {} 
