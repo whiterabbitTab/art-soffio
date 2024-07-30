@@ -12,7 +12,11 @@ export interface IUser {
   username: string;
   name?: string;
   surname?: string;
-  basket: IBasket[]
+  basket: IBasket[];
 }
 
 export interface IUserData extends Omit<IUser, "basket"> {} 
+export interface IUserInfo extends IUser {
+  loading: boolean;
+  id: string;
+}

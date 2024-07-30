@@ -1,24 +1,27 @@
-import { IBasket, IUser } from "@/types/user.type";
+import { IBasket, IUserInfo } from "@/types/user.type";
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { userInfo } from "os";
 
-const initialState: IUser = 
+const initialState: IUserInfo = 
 {
   basket: [],
   email: '',
-  icon: '',
   name: '',
   phone: '',
   surname: '',
-  username: ''
+  icon: '',
+  username: '',
+  loading: true,
+  id: ''
 } 
 
 export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
-    setUser: (state, {payload: [id, value]}: PayloadAction<[string, string | IBasket]>) => {
-      if (typeof value === 'string') {
-        state[id as keyof object] = value
+    setUser: (state, {payload: [id, value]}: PayloadAction<[string, string | IBasket | boolean]>) => {
+      if (typeof value === 'string' || typeof value === 'boolean') {
+        state = { ...state, [id]: value }
       }
       return state
   }}

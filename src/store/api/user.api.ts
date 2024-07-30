@@ -55,4 +55,4 @@ export const userApi = createApi({
   })
 })
 
-export const { useGetUserByIdQuery, useCreateUserByIdMutation } = userApi
+export const { useGetUserByIdQuery, useCreateUserByIdMutation, useUpdateUserByIdMutation } = userApi
