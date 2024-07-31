@@ -2,10 +2,14 @@
 
 import { Image } from "antd";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const Greeting = () => {
 
-  const windowWidth = window.innerWidth * 0.95
+  const [windowWidth, setWindowWidth] = useState(0)
+  useEffect(() => {
+    const windowWidth = window.innerWidth * 0.95
+  }, [])
 
   return(
     <>

@@ -16,24 +16,19 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const dispatch = useTypedDispatch()
 
   useEffect(() => {
-    if (userData && loading) {
-      dispatch(userSlice.actions.setUser([ 'loading', false ]))
-      Object.keys(userData).map((key) => {
-        dispatch(userSlice.actions.setUser([ key, userData[key as keyof object] ]))
-      })
-    }
-  }, [userInfo])
-
-  useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(userSlice.actions.setUser([ 'id', user.uid ]))
+        userData && Object.keys(userData).map((key) => {
+          dispatch(userSlice.actions.setUser([ key, userData[key as keyof object] ]))
+        })
+        dispatch(userSlice.actions.setUser([ 'loading', false ]))
       }
     })
     return () => {
       listen()
     }
-  }, [])
+  }, [userData])
 
   return (
     <>

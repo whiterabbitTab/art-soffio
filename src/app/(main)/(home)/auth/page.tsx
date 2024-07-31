@@ -15,6 +15,7 @@ const AuthPage = () => {
   const [password, setPassword] = useState<string>('')
   const [confirmpassword, setConfirmPassword] = useState<string>('')
   const userInfo = useTypedSelector(state => state.userSlice)
+  
   const handleLogin = (e: MouseEvent<HTMLButtonElement>) => {
     if (password === confirmpassword) {
       signInWithEmailAndPassword(auth, email, password) // не работает в submit
@@ -24,7 +25,7 @@ const AuthPage = () => {
           setConfirmPassword('')
         })
         .catch((error) => console.log(error))
-        router.push('/')
+        router.push('/profile')
       }
   }
 

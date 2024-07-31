@@ -22,9 +22,26 @@ export const userSlice = createSlice({
     setUser: (state, {payload: [id, value]}: PayloadAction<[string, string | IBasket | boolean]>) => {
       if (typeof value === 'string' || typeof value === 'boolean') {
         state = { ...state, [id]: value }
+      } else if (id === 'basket') {
+        state = { ...state, [id as keyof object]: value }
       }
       return state
-  }}
+    },
+    exitUser: (state) => {
+      state = {
+        basket: [],
+        email: '',
+        name: '',
+        phone: '',
+        surname: '',
+        icon: '',
+        username: '',
+        loading: true,
+        id: ''
+      }
+      return state
+    }
+  }
 })
 
 export const { actions } = userSlice

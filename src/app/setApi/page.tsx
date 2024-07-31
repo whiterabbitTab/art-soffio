@@ -27,6 +27,8 @@ const setApiPage = () => {
     entrance: '2024-07-15T17:18:13',
     image: '/product1.png',
     stock: false,
+    brand: 'art-soffio',
+    manufactures: 'art-soffio',
     tons: [
       {
         id: 1,

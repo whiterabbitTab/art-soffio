@@ -1,22 +1,48 @@
 'use client'
 
 import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks"
-import type { IUserData } from "@/types/user.type"
-import { useEffect, useState } from "react"
+import type { IBasket, IUserData } from "@/types/user.type"
+import { useEffect, useMemo, useState } from "react"
 import { InputField } from "../../_components/InputField"
 import { CustomButton } from "@/features/CustomButton"
 import { Image } from 'antd'
 import { actions as userActions } from "@/store/userslice/user.slice"
 import { useUpdateUserByIdMutation } from "@/store/api/user.api"
+import { signOut } from "firebase/auth"
+import { auth } from "@/config/firebase.config"
+import { useRouter } from "next/navigation"
 
 const Profile = () => {
 
+  const router = useRouter()
   const { basket, loading: isLoading, id, ...userInfo } = useTypedSelector(state => state.userSlice)
+  const [defaultData, setDefaultData] = useState<IUserData>()
   const dispatch = useTypedDispatch()
   const [updateUserInfo] = useUpdateUserByIdMutation()
 
   const handleUpdateUser = () => {
     updateUserInfo({ id, body: { ...userInfo, basket } })
+    setDefaultData(userInfo)
+  }
+
+  const handleDropNewInfo = () => {
+    defaultData && Object.keys(defaultData).map((key) => {
+      const inputField = document.querySelector(`input[name="${key}"`) as HTMLInputElement
+      inputField.value = defaultData[key as keyof object]
+      dispatch(userActions.setUser([ key, defaultData[key as keyof object] ]))
+    })
+  }
+
+  useMemo(() => {
+    if (userInfo.email) {
+      setDefaultData(userInfo)
+    }
+  }, [isLoading])
+
+  const handleExitAccount = () => {
+    dispatch(userActions.exitUser())
+    signOut(auth)
+    router.push('/')
   }
 
   return (
@@ -44,9 +70,9 @@ const Profile = () => {
               })}
             </form>
             <div className="flex justify-between w-full px-4">
-              <CustomButton title="Сбросить" className="bg-[#2816c7] text-sm mt-6 px-9 py-1 hover:bg-transparent hover:text-[#2816c7] w-1/4" type="submit" />
+              <CustomButton clickFn={handleDropNewInfo} title="Сбросить" className="bg-[#2816c7] text-sm mt-6 px-9 py-1 hover:bg-transparent hover:text-[#2816c7] w-1/4" type="submit" />
               <CustomButton clickFn={handleUpdateUser} title="Сохранить" className="bg-[#43BE65] text-sm mt-6 px-9 py-1 hover:bg-transparent hover:text-[#43BE65] w-1/4" type="submit" />
-              <CustomButton title="Выйти из аккаунта" className="bg-[#e21b1b] text-sm mt-6 px-9 py-1 hover:bg-transparent hover:text-[#e21b1b] w-1/4" type="submit" />
+              <CustomButton clickFn={handleExitAccount} title="Выйти из аккаунта" className="bg-[#e21b1b] text-sm mt-6 px-9 py-1 hover:bg-transparent hover:text-[#e21b1b] w-1/4" type="submit" />
             </div>
           </div>
         </div>
