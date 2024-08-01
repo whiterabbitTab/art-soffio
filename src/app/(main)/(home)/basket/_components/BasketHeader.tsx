@@ -1,5 +1,3 @@
-import styles from './BasketHeader.module.scss';
-
 export const BasketHeader = ({ countProducts }: { countProducts: number }) => {
   return(
     <div className="flex flex-col justify-center px-5 py-8 gap-y-8 w-full h-36 bg-[#F8F8F8]">

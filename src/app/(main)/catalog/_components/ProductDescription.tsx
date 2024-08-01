@@ -10,7 +10,7 @@ export const ProductDescription = ({ product }: { product: IProducts }) => {
   const [text, setText] = useState<number>(0)
   const [isOpen, setIsOpen] = useState<boolean>(true)
   const { data: products, isLoading, isSuccess } = useGetAllProductsQuery()
-products && products.filter(prod => prod.type === product.type)
+  products && products.filter(prod => prod.type === product.type)
 
   const handleDesc = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.target as HTMLButtonElement
@@ -47,7 +47,7 @@ products && products.filter(prod => prod.type === product.type)
         <p style={{ display: "-webkit-box", WebkitLineClamp: "2", WebkitBoxOrient: "vertical" }} className="h-12 overflow-hidden text-ellipsis text-base font-normal">{product.description.heading}</p>
         <ul id="description" className="flex flex-col gap-y-1 overflow-hidden h-8 text-[#C4C2C2]">
           {product.description.fullInfo.map((info) => {
-            return <li className="transition-all duration-300 font-normal text-base list-disc ml-4">{info}</li>
+            return <li key={info} className="transition-all duration-300 font-normal text-base list-disc ml-4">{info}</li>
           })}
         </ul>
         <button onClick={() => showMore()} className="transition-all duration-300 hover:opacity-60 font-normal text-sm leading-10">Подробнее</button>

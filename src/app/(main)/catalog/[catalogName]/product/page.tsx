@@ -16,7 +16,7 @@ const ProductPage = () => {
   
   const productId = params.get('productId') as string
   const { data: product, isLoading, isSuccess } = useGetProductByIdQuery(productId)
-  console.log(product?.manufactures)
+
   return (
     <div className="w-full flex flex-col gap-y-16 items-center my-12">
       {isLoading ? (<div>Loading...</div>) : isSuccess ? (

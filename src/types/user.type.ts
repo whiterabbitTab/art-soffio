@@ -1,6 +1,9 @@
 export interface IBasket {
   quantity: number;
   id: string;
+  selectedTon: number;
+  price: number;
+  discount: number;
 }
 
 export interface IUser {

@@ -45,8 +45,9 @@ export const Header = () => {
         </div>
         <div className="flex items-center justify-center gap-x-5">
           <Image src="/search_header.png" alt="Search" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
-          <Link href={`${userInfo.email ? '/basket' : '/auth'}`}>
-            <Image src="/basket_header.png" alt="Basket" preview={false} className="transition-all duration-200 hover:opacity-60 cursor-pointer" />
+          <Link className="transition-all duration-300 hover:opacity-60" href={`${userInfo.email ? '/basket' : '/auth'}`}>
+            <Image src="/basket_header.png" alt="Basket" preview={false} className={`transition-all duration-200 hover:opacity-60 cursor-pointer ${userInfo.basket.length > 0 && "translate-y-[10px]"}`} />
+            {userInfo.basket.length > 0 && <div className="relative bg-[#FF00FF] text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center left-4 -top-[24px]">{userInfo.basket.length}</div>}
           </Link>
           <Link href={`${userInfo.email ? '/profile' : '/auth'}`}>
             <Image src={`${userInfo.icon ? userInfo.icon : '/auth_icon.png'}`} alt="Auth" width={30} height={30} preview={false} className={`transition-all duration-200 ${userInfo.icon === undefined && 'opacity-50'} rounded-full hover:opacity-${userInfo.icon ? '60' : '30'} cursor-pointer`} />

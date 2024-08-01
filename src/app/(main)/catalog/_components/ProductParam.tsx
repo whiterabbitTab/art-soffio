@@ -1,11 +1,44 @@
+'use client'
+
 import { CustomButton } from "@/features/CustomButton";
 import { IProducts } from "@/types/products.type";
 import { Image } from "antd";
 import { TonSelector } from "./TonSelector";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
+import { useEffect, useState } from "react";
+import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks";
+import { IBasket } from "@/types/user.type";
+import { useUpdateUserByIdMutation } from "@/store/api/user.api";
+import { actions as userActions} from "@/store/userslice/user.slice";
 
 export const ProductParam = ({ product }: {product: IProducts}) => {
+
+  const { basket, ...userInfo } = useTypedSelector(state => state.userSlice)
+  const [tonId, setTonId] = useState<number>(1)
+  const dispatch = useTypedDispatch()
+  const [updateUser] = useUpdateUserByIdMutation()
+  console.log(basket)
+
+  const handleAddBasket = () => {
+    const newProduct: IBasket = {
+      id: product.id,
+      quantity: 1,
+      selectedTon: tonId,
+      price: product.price,
+      discount: product.discount
+    }
+    basket.length !== 0 ? basket.map(prod => {
+      if ((prod.id === newProduct.id && tonId === prod.selectedTon)) {
+        return
+      } else {
+        const newBasket = [...basket, newProduct]
+        updateUser({ id: userInfo.id, body: { ...userInfo, basket: newBasket } })
+        dispatch(userActions.setUser(['basket', newBasket]))
+      }
+    }) : updateUser({ id: userInfo.id, body: { ...userInfo, basket: [newProduct] } })
+  }
+
   return(
     <div className="w-full flex items-center gap-x-8 text-[#888888]">
       <div className="hidden sm:flex flex-col gap-y-12 justify-between items-center w-1/2">
@@ -63,8 +96,8 @@ export const ProductParam = ({ product }: {product: IProducts}) => {
             {product.discount > 0 && <span className="font-normal max-w-[137px] xl:max-w-[264px] text-[10px] text-[#555555] text-lg leading-6 my-1 line-through">{product.price}₸</span>}
           </div>
         </div>
-        <TonSelector tons={product.tons} />
-        <CustomButton title="В корзину" className="w-full h-10 bg-[#43BE65] text-white text-lg font-normal border-2 hover:text-[#43BE65] hover:bg-white" />
+        <TonSelector tons={product.tons} tonId={tonId} setTonId={setTonId} />
+        <CustomButton clickFn={handleAddBasket} title={basket.filter(filt => filt.id === product.id && filt.selectedTon === tonId).length === 0 ? 'Добавить в коризну' : 'Добавлено'} className="w-full h-10 bg-[#43BE65] text-white text-lg font-normal border-2 hover:text-[#43BE65] hover:bg-white" />
       </div>
     </div>
   );

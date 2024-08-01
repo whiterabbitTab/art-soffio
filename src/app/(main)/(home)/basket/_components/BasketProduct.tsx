@@ -1,8 +1,14 @@
 import { IProducts } from '@/types/products.type';
 import { Image } from 'antd';
 
-export const BasketProduct = ({ product, quantity }: { product: IProducts; quantity: number }) => {
-  return(
+export const BasketProduct = ({ product, quantity, selectedTon }: { product: IProducts; quantity: number; selectedTon: number }) => {
+
+  const selectedTonName = product.tons.find(t => t.id === selectedTon);
+  const handleDeleteProduct = () => {
+    
+  }
+
+  return (
     <div className='flex justify-between w-full my-3'>
       <div className='flex items-center gap-x-6'>
         <label>
@@ -12,7 +18,7 @@ export const BasketProduct = ({ product, quantity }: { product: IProducts; quant
       </div>
       <div className='flex flex-col gap-y-2 text-[#555555] w-[414px]'>
         <h1 className='font-semibold text-xl text-ellipsis whitespace-nowrap overflow-hidden w-full'>{product.title}</h1>
-        <p className='text-lg font-semibold'>Тон {Number('1') < 10 ? '0' + Number('1') : Number('1')} - Сладкий леденец</p>
+        <p className='text-lg font-semibold'>Тон {Number(selectedTon) < 10 ? '0' + Number(selectedTon) : Number(selectedTon)} - {selectedTonName && selectedTonName.ton}</p>
         <p className='text-lg font-semibold'>Вес Нетто: {product.weight}.</p>
         <div className='flex gap-x-3'>
           <span className="font-semibold max-w-[137px] text-[#555555] xl:max-w-[264px] text-[10px] lg:text-[13px] xl:text-xl leading-6 my-1">{product.discount > 0 ? (product.price - (product.price * (product.discount * 0.01))).toFixed(2) : product.price}₸</span>
@@ -20,7 +26,7 @@ export const BasketProduct = ({ product, quantity }: { product: IProducts; quant
         </div>
       </div>
       <div className='flex flex-col items-end gap-y-4'>
-        <Image src='/musor.png' preview={false} width={20} height={20} className='transition-all duration-300 hover:opacity-60 cursor-pointer' />
+        <Image onClick={handleDeleteProduct} src='/musor.png' preview={false} width={20} height={20} className='transition-all duration-300 hover:opacity-60 cursor-pointer' />
         <div className='flex items-center gap-x-[5px]'>
           <span className='transition-all duration-300 hover:bg-white hover:text-[#A19C9C] size-[22px] flex items-center justify-center rounded-full bg-[#A19C9C] text-white text-xl cursor-pointer'>{"-"}</span>
           <span className='font-normal text-base text-[#555555]'>{quantity}</span>

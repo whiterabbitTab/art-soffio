@@ -22,7 +22,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         userData && Object.keys(userData).map((key) => {
           dispatch(userSlice.actions.setUser([ key, userData[key as keyof object] ]))
         })
-        dispatch(userSlice.actions.setUser([ 'loading', false ]))
+        userData && dispatch(userSlice.actions.setUser([ 'loading', false ]))
       }
     })
     return () => {

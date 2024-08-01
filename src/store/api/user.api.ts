@@ -6,6 +6,7 @@ import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fakeBaseQuery(),
+  tagTypes: ["User"],
   endpoints: builder => ({
     getUserById: builder.query<IUser, string>({
       async queryFn(id: string) {
@@ -40,17 +41,18 @@ export const userApi = createApi({
         } catch (error: any) {
           console.warn(error.message)
         }
-      }
+      },
     }),
     updateUserById: builder.mutation<void,{ id: string; body: IUser}>({
       async queryFn({ id, body }: { id: string, body: IUser }) {
         try {
           const collectionShap = await setDoc(doc(firestore, 'users', id), body)
-          return { data: collectionShap }
+          return { data: body }
         } catch (error: any) {
           console.warn(error.message)
         }
-      }
+      },
+      invalidatesTags: ['User'],
     })
   })
 })

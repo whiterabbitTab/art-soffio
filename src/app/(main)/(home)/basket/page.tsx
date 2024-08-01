@@ -8,6 +8,7 @@ import { BasketSummary } from "./_components/BasketSummary"
 const Basket = () => {
 
   const { basket, ...userInfo } = useTypedSelector(state => state.userSlice)
+  const summary = basket.map(item => (item.price - (item.price * (item.discount / 100))) * item.quantity).reduce((a, b) => a + b, 0)
 
   return (
     <div className="flex justify-between w-full py-6 text-[#555555]">
@@ -15,7 +16,7 @@ const Basket = () => {
         <BasketHeader countProducts={basket.length} />
         <BasketProducts basket={basket} loading={userInfo.loading} />
       </div>
-      <BasketSummary />
+      <BasketSummary summary={summary} />
     </div>
   )
 }

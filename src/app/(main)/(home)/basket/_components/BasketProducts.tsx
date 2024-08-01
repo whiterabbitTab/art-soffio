@@ -11,8 +11,10 @@ interface IBasketProducts {
 }
 
 export const BasketProducts = ({ basket, loading }: IBasketProducts) => {
+
   const { data: products, isLoading, isSuccess } = useGetAllProductsQuery()
-  const filteredProducts: IProducts[] = (products && basket) ? products.filter(filt => basket.map(item => item.id).includes(filt.id)) : []
+  const filteredProducts: IProducts[] = (products && basket) ?
+  basket.map(item => products.find(filt => filt.id === item.id)) : []
 
   return (
     <div className="flex flex-col px-5 py-4 gap-y-4 bg-[#F8F8F8] rounded-[9px] w-full">
@@ -25,7 +27,7 @@ export const BasketProducts = ({ basket, loading }: IBasketProducts) => {
             </label>
           </div>
           <div className='w-full h-[2px] bg-[#E5E5E5]'></div>
-          {filteredProducts.map((product, i) => <BasketProduct key={i} product={product} quantity={basket[i].quantity} />)}
+          {filteredProducts.map((product, i) => <BasketProduct key={i} product={product} quantity={basket[i].quantity} selectedTon={basket[i].selectedTon} />)}
         </>
       )}
     </div>
