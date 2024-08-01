@@ -18,7 +18,7 @@ export const BasketProducts = ({ basket, loading }: IBasketProducts) => {
 
   return (
     <div className="flex flex-col px-5 py-4 gap-y-4 bg-[#F8F8F8] rounded-[9px] w-full">
-      {loading ? <p>Загрузка...</p> : basket.length === 0 ? <p>Корзина пуста</p> : (
+      {isLoading ? <p>Загрузка...</p> : basket.length === 0 ? <p>Корзина пуста</p> : (
         <>
           <div className='flex gap-x-3'>
             <label className='flex items-center gap-x-2'>

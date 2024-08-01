@@ -5,7 +5,7 @@ import { actions as userActions } from '@/store/userslice/user.slice';
 import { useUpdateUserByIdMutation } from '@/store/api/user.api';
 
 export const BasketProduct = ({ product, quantity, selectedTon }: { product: IProducts; quantity: number; selectedTon: number }) => {
-
+  
   const selectedTonName = product.tons.find(t => t.id === selectedTon);
   const { basket, ...userInfo } = useTypedSelector(state => state.userSlice)
   const dispatch = useTypedDispatch()

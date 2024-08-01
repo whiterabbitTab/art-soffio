@@ -6,7 +6,7 @@ import { Image } from "antd";
 import { TonSelector } from "./TonSelector";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/hooks/typedHooks";
 import { IBasket } from "@/types/user.type";
 import { useUpdateUserByIdMutation } from "@/store/api/user.api";
@@ -18,7 +18,6 @@ export const ProductParam = ({ product }: {product: IProducts}) => {
   const [tonId, setTonId] = useState<number>(1)
   const dispatch = useTypedDispatch()
   const [updateUser] = useUpdateUserByIdMutation()
-  console.log(basket)
 
   const handleAddBasket = () => {
     const newProduct: IBasket = {
@@ -27,16 +26,15 @@ export const ProductParam = ({ product }: {product: IProducts}) => {
       selectedTon: tonId,
       price: product.price,
       discount: product.discount
-    }
+    } 
     basket.length !== 0 ? basket.map(prod => {
       if ((prod.id === newProduct.id && tonId === prod.selectedTon)) {
         return
       } else {
         const newBasket = [...basket, newProduct]
-        updateUser({ id: userInfo.id, body: { ...userInfo, basket: newBasket } })
-        dispatch(userActions.setUser(['basket', newBasket]))
+        updateUser({ id: userInfo.id, body: { ...userInfo, basket: newBasket } }).then(({ data }) => dispatch(userActions.setUser(['basket', data.basket])))
       }
-    }) : updateUser({ id: userInfo.id, body: { ...userInfo, basket: [newProduct] } })
+    }) : updateUser({ id: userInfo.id, body: { ...userInfo, basket: [newProduct] } }).then(({ data }) => dispatch(userActions.setUser(['basket', data.basket])))
   }
 
   return(
