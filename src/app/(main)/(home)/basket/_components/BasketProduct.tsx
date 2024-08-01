@@ -1,11 +1,20 @@
+import { useTypedDispatch, useTypedSelector } from '@/hooks/typedHooks';
 import { IProducts } from '@/types/products.type';
 import { Image } from 'antd';
+import { actions as userActions } from '@/store/userslice/user.slice';
+import { useUpdateUserByIdMutation } from '@/store/api/user.api';
 
 export const BasketProduct = ({ product, quantity, selectedTon }: { product: IProducts; quantity: number; selectedTon: number }) => {
 
   const selectedTonName = product.tons.find(t => t.id === selectedTon);
+  const { basket, ...userInfo } = useTypedSelector(state => state.userSlice)
+  const dispatch = useTypedDispatch()
+  const [updateUser] = useUpdateUserByIdMutation()
   const handleDeleteProduct = () => {
-    
+    const delProd = basket.filter(prod => prod.id === product.id && prod.selectedTon === selectedTon)
+    const newBasket = basket.filter(prod => prod !== delProd[0])
+    updateUser({ id: userInfo.id, body: { ...userInfo, basket: newBasket } })
+    dispatch(userActions.setUser(['basket', newBasket]))
   }
 
   return (
