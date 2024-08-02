@@ -40,7 +40,7 @@ const StocksGreeting = () =>{
           )
         })}
       </Carousel> */}
-      <div className="hidden lg:flex gap-x-14 items-center w-full">
+      <div className="hidden lg:flex gap-x-14 items-center justify-center w-full">
         {greeting.map(greet => {
           return (
             <div className="flex flex-col items-center gap-y-3">
